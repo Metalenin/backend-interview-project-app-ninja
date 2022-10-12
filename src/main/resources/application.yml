@@ -1,0 +1,42 @@
+server:
+  servlet.context-path: /api
+spring:
+  datasource:
+    url: jdbc:h2:mem:localdb
+    username: postgres
+    password: abc123
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-ixd0n0kj.us.auth0.com/
+
+springdoc:
+  api-docs.path: /api-docs
+  swagger-ui:
+    oauth:
+      client-id: aBK6jA8tjWcbXQ5U226QW9fR2gK0KTb1
+      client-secret: GfDWskYVINJHNmVRac18ClOZ_Wg7Wg5vNAvpT7S5TIQMYwOboE-PfTNc9S41LDnC
+      authorization-url: https://dev-ixd0n0kj.us.auth0.com/authorize
+      token-url: https://dev-ixd0n0kj.us.auth0.com/oauth/token
+      refresh-url: https://dev-ixd0n0kj.us.auth0.com/oauth/token
+      scopes:
+        - openid
+    oauth2-redirect-url: http://localhost:8080/api/swagger-ui/oauth2-redirect.html
+              
+             
